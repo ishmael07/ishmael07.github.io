@@ -9,6 +9,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical images for faster initial render -->
+    <link rel="preload" as="image" href="images/city222.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="images/mycutout.png" fetchpriority="high">
 
     <style>
         /*
@@ -141,6 +145,26 @@
         
         *, *::before, *::after {
             box-sizing: border-box;
+        }
+
+        /* Image Optimization */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        img[loading="lazy"] {
+            content-visibility: auto;
+        }
+
+        /* Optimize image rendering */
+        .project-image-container img,
+        .research-image-container img,
+        .about-image {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            object-fit: cover;
         }
 
         /* Optimize scrolling performance */
@@ -303,7 +327,9 @@
             height: 100%;
             z-index: 1;
             
-            background: url('images/city222.jpg') center center/cover no-repeat; 
+            background: url('images/city222.jpg') center center/cover no-repeat;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges; 
             background-position: center top;
             background-attachment: fixed; 
             opacity: 0.2;
@@ -427,7 +453,9 @@
             background-image: url('images/mycutout.png');
             background-size: contain; 
             background-repeat: no-repeat;
-            background-position: bottom 0; 
+            background-position: bottom 0;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges; 
             opacity: 0.8; 
             z-index: 20; 
             transition: opacity 0.3s ease; 
@@ -2210,10 +2238,10 @@
                 <div class="about-visuals-right scroll-animate-right">
                     
                     <div class="about-images">
-                        <img src="images/IMG_2959.png" alt="Ishmael working on project" class="about-image">
-                        <img src="images/IMG_7252.png" alt="Ishmael presenting research" class="about-image">
-                        <img src="images/IMG_4441.png" alt="Ishmael building circuit" class="about-image">
-                        <img src="images/scioly.png" alt="Ishmael building circuit" class="about-image">
+                        <img src="images/IMG_2959.png" alt="Ishmael working on project" class="about-image" loading="lazy" decoding="async" width="150" height="130">
+                        <img src="images/IMG_7252.png" alt="Ishmael presenting research" class="about-image" loading="lazy" decoding="async" width="150" height="130">
+                        <img src="images/IMG_4441.png" alt="Ishmael building circuit" class="about-image" loading="lazy" decoding="async" width="150" height="130">
+                        <img src="images/scioly.png" alt="Ishmael building circuit" class="about-image" loading="lazy" decoding="async" width="150" height="130">
                     </div>
                     
                     <div class="about-skills-section">
@@ -2326,7 +2354,7 @@
                 <div class="project-card scroll-animate">
                     
                     <div class="project-image-container">
-                        <img src="images/rocketpic.png" alt="Screenshot of Smart Home Dashboard" loading="lazy">
+                        <img src="images/rocketpic.png" alt="Screenshot of Smart Home Dashboard" loading="lazy" decoding="async" width="400" height="200">
                         </div>
                     
                     <div class="project-content">
@@ -2365,7 +2393,7 @@ to house the electronics.</p>
 
                 <div class="project-card scroll-animate scroll-animate-delay-1">
                     <div class="project-image-container">
-                        <img src="images/img8028.jpg" alt="Screenshot of Portfolio Builder Interface" loading="lazy">
+                        <img src="images/img8028.jpg" alt="Screenshot of Portfolio Builder Interface" loading="lazy" decoding="async" width="400" height="200">
                         </div>
                     <div class="project-content">
                         <div class="project-meta">
@@ -2397,7 +2425,7 @@ to house the electronics.</p>
                 
                 <div class="project-card scroll-animate scroll-animate-delay-2">
                     <div class="project-image-container">
-                        <img src="images/proj3.png" alt="Graph of Sentiment Analysis Results" loading="lazy">
+                        <img src="images/proj3.png" alt="Graph of Sentiment Analysis Results" loading="lazy" decoding="async" width="400" height="200">
                         </div>
                     <div class="project-content">
                         <div class="project-meta">
@@ -2445,7 +2473,7 @@ to house the electronics.</p>
                             <a href="https://drive.google.com/file/d/15FZhjNwxWyDaHNF0ZwIAA69y_P8NtKoq/view?usp=sharing" target="_blank" class="research-link">View Research Poster</a>
                         </div>
                         <div class="research-image-container">
-                            <img src="images/research1.png" alt="Image of Microfluidic Device Setup" loading="lazy">
+                            <img src="images/research1.png" alt="Image of Microfluidic Device Setup" loading="lazy" decoding="async" width="300" height="200">
                         </div>
                     </div>
 
@@ -2468,7 +2496,7 @@ to house the electronics.</p>
 
                         </div>
                         <div class="research-image-container">
-                            <img src="images/research3.jpg" alt="Image of Drone Flight Path Optimization" loading="lazy">
+                            <img src="images/research3.jpg" alt="Image of Drone Flight Path Optimization" loading="lazy" decoding="async" width="300" height="200">
 
                         </div>
                     </div>
@@ -2487,7 +2515,7 @@ to house the electronics.</p>
                             <a href="https://www.linkedin.com/in/ishmael-lallmahamad/overlay/1711231846564/single-media-viewer/?profileId=ACoAAES5XJcBr31nZV9Cl7SFwxQux6xoO9v5WXE" target="_blank" class="research-link">View Research Poster</a>
                         </div>
                         <div class="research-image-container">
-                            <img src="images/research2.png" alt="Image of Drone Flight Path Optimization" loading="lazy">
+                            <img src="images/research2.png" alt="Image of Drone Flight Path Optimization" loading="lazy" decoding="async" width="300" height="200">
                         </div>
                     </div>
 
@@ -2509,7 +2537,7 @@ to house the electronics.</p>
                         <div class="exp-header">
                             <div class="exp-title-group">
                                 <div class="exp-logo">
-                                    <img src="images/ets.png" alt="Company Logo" onerror="this.style.display='none'">
+                                    <img src="images/ets.png" alt="Company Logo" loading="lazy" decoding="async" width="42" height="42" onerror="this.style.display='none'">
                                     <span class="logo-placeholder-icon"></span>
                                 </div>
                                 <h3>Incoming ETS Technician</h3>
@@ -2750,7 +2778,7 @@ to house the electronics.</p>
                     
                     <a href="https://www.amazonfutureengineer.com/document-2025-afe-scholarship-us-winners" class="news-card scroll-animate scroll-animate-delay-1">
                         <div class="news-img-container">
-                            <img src="images/pub3.png" alt="Manhattan AI Summit" class="news-img-placeholder">
+                            <img src="images/pub3.png" alt="Manhattan AI Summit" class="news-img-placeholder" loading="lazy" decoding="async" width="90" height="90">
                         </div>
                         <div class="news-content">
                             <span class="news-tag">Publication</span>
@@ -2761,7 +2789,7 @@ to house the electronics.</p>
 
                     <a href="https://www.nyabjpulse.com/post/manhattan-ai-summit-exploring-ai-s-role-in-student-education" class="news-card scroll-animate scroll-animate-delay-2">
                         <div class="news-img-container">
-                            <img src="images/pub1.png" alt="Manhattan AI Summit" class="news-img-placeholder">
+                            <img src="images/pub1.png" alt="Manhattan AI Summit" class="news-img-placeholder" loading="lazy" decoding="async" width="90" height="90">
                         </div>
                         <div class="news-content">
                             <span class="news-tag">Media</span>
