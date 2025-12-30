@@ -2949,11 +2949,28 @@ to house the electronics.</p>
                 }
             }
 
-            const initialLink = document.querySelector('[data-section-id="home"]');
-            if (initialLink) {
-                activeLink = initialLink;
-                setTextState(activeLink, true); 
-                updateIndicator(activeLink, true);
+            // Wait for layout to be stable before positioning indicator
+            function initializeIndicator() {
+                const initialLink = document.querySelector('[data-section-id="home"]');
+                if (initialLink) {
+                    activeLink = initialLink;
+                    setTextState(activeLink, true);
+                    // Use requestAnimationFrame to ensure layout is complete
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            updateIndicator(initialLink, true);
+                        });
+                    });
+                }
+            }
+
+            // Initialize indicator after page is fully loaded
+            if (document.readyState === 'complete') {
+                initializeIndicator();
+            } else {
+                window.addEventListener('load', initializeIndicator);
+                // Also try after a short delay as fallback
+                setTimeout(initializeIndicator, 100);
             }
             
             function handleScroll(sectionId) {
